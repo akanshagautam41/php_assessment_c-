@@ -1,0 +1,74 @@
+// Event Management Program assessment 
+
+#include<iostream>
+#include<cmath>
+#include<string>
+#include<iomanip>
+using namespace std;
+
+int main()
+{
+		
+	string nameofevent,custumername;
+	double numberofguest;
+	int numberofminute;
+	int NumberOfServers, cost1;
+    double CostForOneServer,Test, TotalFoodCost, AverageCost, cost2, DepositAmount,TotalCost;
+    const double CostPerHour = 18.50;
+    const double CostPerMinute = .40;
+    const double CostOfDinner = 20.70;
+	
+	
+	cout<<"***********Event Management System*************\n";
+	
+	cout<<"Enter the Name Of the Event:\n";
+	getline(cin,nameofevent);
+	
+	cout<<endl<<"Enter custumer first & last name:\n";
+	getline(cin,custumername);
+
+	
+	
+	cout<<endl<<"Enter the number of guests:"<<endl;
+	cin>> numberofguest;
+	
+	
+	cout<<"\n\nEnter the number of minutes in the event:"<<endl;
+	cin>> numberofminute;
+	
+	
+	cout<< "=================Event estimate for : " <<custumername<<" ================="<<endl ;
+
+    Test=numberofguest /20;
+    NumberOfServers = ceil(Test);
+
+	cost1= (numberofminute/60) * CostPerHour;
+	cost2= (numberofminute%60) * CostPerMinute;
+    CostForOneServer = cost1 + cost2;
+	
+	cout<<"Number Of Server: "<< NumberOfServers<< fixed << setprecision(2) <<endl;
+	
+	cout<<"The Cost for server: "<< setw(5) <<CostForOneServer<<endl;
+	
+	TotalFoodCost = numberofguest * CostOfDinner;
+
+	
+    cout<<"The Cost for food is : "<< setw(5)<<TotalFoodCost<<endl;
+	
+	AverageCost = TotalFoodCost / numberofguest;
+	cout<<"Average cost per person :"<< setw(5)<<AverageCost<<endl;
+
+	
+
+	TotalCost = TotalFoodCost + (CostForOneServer * NumberOfServers);
+    cout<<"Total Cost Is :" << setw(5)<< TotalCost<<endl;
+ 
+    
+    DepositAmount=TotalCost*.25;
+
+    cout<<"Please Deposite a 25% Deposit To Reserve The Event the deposit is :"<<endl;
+    cout<<"The deposit needed is: "<< setw(5)<<DepositAmount<<endl;
+
+	return 0;
+
+}
